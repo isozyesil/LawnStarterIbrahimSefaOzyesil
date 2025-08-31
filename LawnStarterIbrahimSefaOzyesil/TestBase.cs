@@ -16,7 +16,6 @@ namespace LawnStarterIbrahimSefaOzyesil
             Pages = new Assembly.Pages(Browser);
             Logger.Info("Test Started");
         }
-
         [TearDown]
         public void EndTest()
         {

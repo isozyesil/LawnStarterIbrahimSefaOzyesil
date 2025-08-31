@@ -24,7 +24,7 @@ namespace LawnStarterIbrahimSefaOzyesil.Pages
         private IWebElement ExpiryIframe => browsers.FindAndGetFirstElement(By.CssSelector("div#card-expiry iframe"));
         private IWebElement CvcIframe => browsers.FindAndGetFirstElement(By.CssSelector("div#card-cvc iframe"));
         private IWebElement getBookNow => browsers.FindAndGetFirstElement(By.CssSelector("[data-testid='button-text']"));
-        private IWebElement getAgreementCheckBox => browsers.FindAndGetFirstElement(By.Id("checkbox-0"));
+        private IWebElement getAgreementCheckBox => browsers.FindAndGetFirstElement(By.CssSelector("div[data-testid='checkbox-0']"));
 
         public void SetFullNAme(string fullName)
         {
@@ -34,7 +34,6 @@ namespace LawnStarterIbrahimSefaOzyesil.Pages
         public void setLastName(string lastName)
         {
             getLastName.SendKeys(lastName);
-
         }
         public void setEmaillAddress(string emailaddress)
         {

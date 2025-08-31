@@ -2,6 +2,7 @@
 using LawnStarterIbrahimSefaOzyesil.Assembly;
 using NUnit.Framework;
 using Faker;
+using OpenQA.Selenium.DevTools.V137.Autofill;
 
 namespace LawnStarterIbrahimSefaOzyesil.Tests
 {
@@ -34,16 +35,17 @@ namespace LawnStarterIbrahimSefaOzyesil.Tests
         {
             Pages.AccountsAndPaymentPage.SetFullNAme(Name.First());
             Pages.AccountsAndPaymentPage.setLastName(Name.Last());
-            Pages.AccountsAndPaymentPage.setEmaillAddress(Internet.Email());
-            Pages.AccountsAndPaymentPage.SetCardNumber("4111111111111111");
-            Pages.AccountsAndPaymentPage.SetExpiryDate("12/26");
-            Pages.AccountsAndPaymentPage.SetCVV("123");
+            Pages.AccountsAndPaymentPage.setEmaillAddress(Internet.Email());            
+           // Pages.AccountsAndPaymentPage.SetCardNumber("4111111111111111");
+           // Pages.AccountsAndPaymentPage.SetExpiryDate("12/28");
+           // Pages.AccountsAndPaymentPage.SetCVV("123");
             Pages.AccountsAndPaymentPage.ClickOnAgreementCheckBox();
             Pages.AccountsAndPaymentPage.ClickOnBookNowButton();
         }
         private void VerifyBookingConfirmation()
         {
-            
+            Pages.OtherSeervicesPage.ClickOnNoThanksButton();
+            Pages.PropertyInfoPage.VerifyThatPropertyPageIsLoaded();
         }
     }
 }

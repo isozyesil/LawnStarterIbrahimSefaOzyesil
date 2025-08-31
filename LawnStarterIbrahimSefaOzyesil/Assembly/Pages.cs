@@ -27,6 +27,14 @@ namespace LawnStarterIbrahimSefaOzyesil.Assembly
         {
             get { return new AccountsAndPaymentPage(_browser); }
         }
+        public OtherSeervicesPage OtherSeervicesPage
+        {
+            get { return new OtherSeervicesPage(_browser); }
+        }
+        public PropertyInfoPage PropertyInfoPage
+        {
+            get { return new PropertyInfoPage(_browser); }
+        }
 
     }
 }
