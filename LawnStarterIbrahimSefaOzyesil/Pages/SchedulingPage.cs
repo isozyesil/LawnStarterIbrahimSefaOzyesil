@@ -16,15 +16,18 @@ namespace LawnStarterIbrahimSefaOzyesil.Pages
         {
             this.browsers = browsers;
         }
-        private IWebElement GetTrimmingPlanButton(string planName) => browsers.FindAndGetFirstElement(By.XPath($"//button[.//div[@data-testid='undefined-col' and contains(normalize-space(.), '{planName}')]]")
-    );
+        private IWebElement GetTrimmingPlan(string planName) => browsers.WaitUntilVisible(By.XPath($"//button[.//div[@data-testid='undefined-col' and normalize-space(text())='{planName}']]"));
+        private IWebElement ContinueButton => browsers.FindAndGetFirstElement(By.XPath("//button[.//div[@data-testid='button-text' and normalize-space(text())='Continue']]"));
 
         public void SelectTrimmingPlan(string planName)
         {
-            var option = GetTrimmingPlanButton(planName);
-            option.Click();
-
+            GetTrimmingPlan(planName).Click();
         }
 
+        public void ClickOnContinueButton()
+        {
+            ContinueButton.Click();
+        }
+        
     }
 }

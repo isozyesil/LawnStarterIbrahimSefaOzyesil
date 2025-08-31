@@ -9,7 +9,6 @@ namespace LawnStarterIbrahimSefaOzyesil.Paages
     public class QuoteQuestionsPage
     {
         private Browsers browsers;
-
         public QuoteQuestionsPage(Browsers browsers)
         {
             this.browsers = browsers;
@@ -18,18 +17,16 @@ namespace LawnStarterIbrahimSefaOzyesil.Paages
         private IWebElement getShrubBetween5ftAnd10ftOptionByNumber => browsers.FindAndGetFirstElement(By.Id("react-select-3-input"));
         private IWebElement getShrubsAndHedgesMoreThan10ft => browsers.FindAndGetFirstElement(By.Id("react-select-4-input"));
         private IWebElement getMyQuoteButton => browsers.FindAndGetFirstElement(By.CssSelector("[data-testid='get-my-quote-btn']"));
-        private IWebElement GetPropertyByID(string testId) => browsers.FindAndGetFirstElement(By.CssSelector($"[data-testid='{testId}']"));
+        private IWebElement GetPropertyByID(string testId) => browsers.WaitUntilVisible(By.CssSelector($"[data-testid='{testId}']"));
         private IWebElement GetShrubLessThan5ftOptionByNumber(string optionNo) => browsers.FindAndGetFirstElement(By.Id($"react-select-2-option-{optionNo}"));
         private IWebElement GetShrubBetween5ftAnd10ftOptionByNumber(string optionNo) => browsers.FindAndGetFirstElement(By.Id($"react-select-3-option-{optionNo}"));
-        private IWebElement GetShrubsAndHedgesMoreThan10ft(string optionNo) => browsers.FindAndGetFirstElement(By.Id($"react-select-4-option-{optionNo}")); 
-       
-
+        private IWebElement GetShrubsAndHedgesMoreThan10ft(string optionNo) => browsers.FindAndGetFirstElement(By.Id($"react-select-4-option-{optionNo}"));
 
         public void SelectProperyType(params string[] propertyTypes)
         {
             foreach (var type in propertyTypes)
             {
-                string testId = propertyTypeMap[type];  
+                string testId = propertyTypeMap[type];
                 var checkbox = GetPropertyByID(testId);
                 checkbox.Click();
             }
@@ -39,7 +36,7 @@ namespace LawnStarterIbrahimSefaOzyesil.Paages
             ClickToLessThan5ftShrubsDropdown();
             var option = GetShrubLessThan5ftOptionByNumber(numberOfShrubs);
             option.Click();
-            
+
         }
         public void SelectBetween5ftAnd10ftShrubs(string numberOfShrubs)
         {
@@ -78,7 +75,7 @@ namespace LawnStarterIbrahimSefaOzyesil.Paages
              { "Front-yard", "checkbox-1" },
              { "Backyard", "checkbox-2" },
              { "Left side", "checkbox-3" },
-             { "Right side", "checkbox-4" },             
-        };   
+             { "Right side", "checkbox-4" },
+        };
     }
 }

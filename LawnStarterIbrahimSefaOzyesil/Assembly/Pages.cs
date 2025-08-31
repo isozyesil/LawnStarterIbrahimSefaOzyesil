@@ -23,5 +23,10 @@ namespace LawnStarterIbrahimSefaOzyesil.Assembly
         {
             get { return new SchedulingPage(_browser); }
         }
+        public AccountsAndPaymentPage AccountsAndPaymentPage
+        {
+            get { return new AccountsAndPaymentPage(_browser); }
+        }
+
     }
 }

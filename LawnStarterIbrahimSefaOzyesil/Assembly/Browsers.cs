@@ -10,9 +10,9 @@ namespace LawnStarterIbrahimSefaOzyesil.Assembly
     public class Browsers
     {
         protected IWebDriver webDriver;
-        private string baseURL = "https://dev-signup-web.lawnstarter.com/cart/contact-info/?address=1016%20Kirk%20Street%2C%20Orlando%2C%20FL%2032808%2C%20Orlando%2C%20FL%2032808&name=Jay+Doe&phone=999-999-9999&intent=bushTrimming&googlePlace=true";
-        private string browser = "Chrome";
-        private IWebElement element;
+        private readonly string baseURL = Config.BaseUrl;
+        private readonly string browser = Config.Browser;
+        private readonly int defaultTimeout = Config.DefaultTimeout;
         public Browsers()
         {
             switch (browser)
@@ -36,10 +36,8 @@ namespace LawnStarterIbrahimSefaOzyesil.Assembly
         {
             Goto(baseURL);
         }
-        public IWebDriver GetDriver
-        {
-            get { return webDriver; }
-        }
+        public IWebDriver GetDriver => webDriver;
+
         public void Goto(string url)
         {
             webDriver.Url = url;
@@ -50,17 +48,22 @@ namespace LawnStarterIbrahimSefaOzyesil.Assembly
         }
         public IWebElement FindAndGetFirstElement(By identifier)
         {
-            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(30));
+            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(defaultTimeout));
             wait.Until(ExpectedConditions.ElementIsVisible(identifier));
             return webDriver.FindElement(identifier);
         }
         public IWebDriver WaitForPageToLoad()
         {
-            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(30));
+            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(defaultTimeout));
             wait.Until(driver => ((IJavaScriptExecutor)driver).ExecuteScript("return document.readyState").Equals("complete"));
             return webDriver;
         }
+        public IWebElement WaitUntilVisible(By locator, int timeoutSeconds = 0)
+        {
+            if (timeoutSeconds == 0)
+                timeoutSeconds = defaultTimeout;
+            var wait = new WebDriverWait(GetDriver, TimeSpan.FromSeconds(timeoutSeconds));
+            return wait.Until(ExpectedConditions.ElementIsVisible(locator));
+        }
     }
 }
-
-
