@@ -11,10 +11,10 @@ namespace LawnStarterIbrahimSefaOzyesil.Pages
         {
             this.browsers = browsers;
         }
-        private IWebElement getNoThanksButton => browsers.WaitUntilVisible(By.CssSelector("button[data-testid='no-thanks-btn']"));       
+        private IWebElement noThanksButton => browsers.WaitUntilVisible(By.CssSelector("button[data-testid='no-thanks-btn']"));       
         public void ClickOnNoThanksButton()
         {
-            getNoThanksButton.Click();
+            noThanksButton.Click();
         }
     }
 }

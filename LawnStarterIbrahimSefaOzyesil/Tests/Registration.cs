@@ -26,9 +26,8 @@ namespace LawnStarterIbrahimSefaOzyesil.Tests
         private void FillSchedulingPage()
         {
             var futureDate = DateTime.Today.AddMonths(6);
-            Pages.SchedulingPage.SetPreferredDate(futureDate);
             Pages.SchedulingPage.SelectTrimmingPlan("Bi-Weekly");
-            Pages.SchedulingPage.SetPreferredDate(futureDate);            
+            Pages.SchedulingPage.SetPreferredDate(futureDate); 
             Pages.SchedulingPage.ClickOnContinueButton();            
         }
         private void FillAccountAndPaymentPage()

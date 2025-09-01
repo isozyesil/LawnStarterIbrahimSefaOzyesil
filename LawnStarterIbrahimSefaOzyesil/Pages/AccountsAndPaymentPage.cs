@@ -17,45 +17,45 @@ namespace LawnStarterIbrahimSefaOzyesil.Pages
         {
             this.browsers = browsers;
         }
-        private IWebElement getFullName => browsers.WaitUntilVisible(By.Id("firstName"));
-        private IWebElement getLastName => browsers.FindAndGetFirstElement(By.Id("lastName"));
-        private IWebElement getEmailAddress => browsers.FindAndGetFirstElement(By.Id("email"));
-        private IWebElement getCardNumberIframe => browsers.WaitUntilVisible(By.CssSelector("iframe[title='Secure card number input frame']"));
-        private IWebElement getExpiryIframe => browsers.WaitUntilVisible(By.CssSelector("iframe[title='Secure expiration date input frame']"));
-        private IWebElement getCVCIframe => browsers.WaitUntilVisible(By.CssSelector("iframe[title='Secure CVC input frame']"));
-        private IWebElement getBookNow => browsers.FindAndGetFirstElement(By.CssSelector("[data-testid='button-text']"));
-        private IWebElement getAgreementCheckBox => browsers.FindAndGetFirstElement(By.CssSelector("div[data-testid='checkbox-0']"));
+        private IWebElement fullNameTextbox => browsers.WaitUntilVisible(By.Id("firstName"));
+        private IWebElement lastNameTextbox => browsers.FindAndGetFirstElement(By.Id("lastName"));
+        private IWebElement emailAddressTextbox => browsers.FindAndGetFirstElement(By.Id("email"));
+        private IWebElement cardNumberIframeTextbox => browsers.WaitUntilVisible(By.CssSelector("iframe[title='Secure card number input frame']"));
+        private IWebElement expiryIframeTextbox => browsers.WaitUntilVisible(By.CssSelector("iframe[title='Secure expiration date input frame']"));
+        private IWebElement cardCVCIframeTextbox => browsers.WaitUntilVisible(By.CssSelector("iframe[title='Secure CVC input frame']"));
+        private IWebElement bookNowButton => browsers.FindAndGetFirstElement(By.CssSelector("[data-testid='button-text']"));
+        private IWebElement agreementCheckBox => browsers.FindAndGetFirstElement(By.CssSelector("div[data-testid='checkbox-0']"));
         public void SetFullNAme(string fullName)
         {
-            getFullName.SendKeys(fullName);
+            fullNameTextbox.SendKeys(fullName);
         }
         public void SetLastName(string lastName)
         {
-            getLastName.SendKeys(lastName);
+            lastNameTextbox.SendKeys(lastName);
         }
         public void SetEmaillAddress(string emailaddress)
         {
-            getEmailAddress.SendKeys(emailaddress);
+            emailAddressTextbox.SendKeys(emailaddress);
         }
         public void SetCardNumber(string cardNumber)
         {
-            TypeInIframe(getCardNumberIframe, cardNumber, "input[name='cardnumber']");
+            TypeInIframe(cardNumberIframeTextbox, cardNumber, "input[name='cardnumber']");
         }
         public void SetExpiry(string expiry)
         {
-            TypeInIframe(getExpiryIframe, expiry, "input[name='exp-date']");
+            TypeInIframe(expiryIframeTextbox, expiry, "input[name='exp-date']");
         }
         public void SetCVV(string cvv)
         {
-            TypeInIframe(getCVCIframe, cvv, "input[name='cvc']");
+            TypeInIframe(cardCVCIframeTextbox, cvv, "input[name='cvc']");
         }
         public void ClickOnAgreementCheckBox()
         {
-            getAgreementCheckBox.Click();
+            agreementCheckBox.Click();
         }
         public void ClickOnBookNowButton()
         {
-            getBookNow.Click();
+            bookNowButton.Click();
         }
         private void TypeInIframe(IWebElement iframe, string value, string inputSelector)
         {            
