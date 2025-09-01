@@ -2,7 +2,6 @@
 using LawnStarterIbrahimSefaOzyesil.Paages;
 using LawnStarterIbrahimSefaOzyesil.Pages;
 
-
 namespace LawnStarterIbrahimSefaOzyesil.Assembly
 {
     public class Pages

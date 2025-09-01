@@ -1,11 +1,5 @@
 ﻿using LawnStarterIbrahimSefaOzyesil.Assembly;
 using OpenQA.Selenium;
-using Selenium.WebDriver.WaitExtensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LawnStarterIbrahimSefaOzyesil.Pages
 {    public class PropertyInfoPage

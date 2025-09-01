@@ -1,6 +1,5 @@
 ﻿using LawnStarterIbrahimSefaOzyesil.Assembly;
 using OpenQA.Selenium;
-using Selenium.WebDriver.WaitExtensions;
 
 namespace LawnStarterIbrahimSefaOzyesil.Pages
 {

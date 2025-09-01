@@ -1,7 +1,4 @@
-﻿using NUnit.Framework;
-using System;
-
-public static class Logger
+﻿public static class Logger
 {
     public static void Info(string message)
     {
