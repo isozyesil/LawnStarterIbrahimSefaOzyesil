@@ -10,8 +10,7 @@ namespace LawnStarterIbrahimSefaOzyesil.Pages
             this.browsers = browsers;
         }
         private Browsers browsers;
-        private IWebElement PlanOption(string planName) => browsers.WaitUntilVisible(By.XPath($"//button//div[contains(normalize-space(),'{planName}')]"));
- 
+        private IWebElement PlanOption(string planName) => browsers.WaitUntilVisible(By.XPath($"//button//div[contains(normalize-space(),'{planName}')]")); 
         private IWebElement ContinueButton => browsers.FindAndGetFirstElement(By.XPath("//button[.//div[@data-testid='button-text' and normalize-space(text())='Continue']]"));
         private IWebElement PreferredDateInput => browsers.WaitUntilVisible(By.CssSelector("input[placeholder='EEEE, MMMM DD, YYYY']"));
         private IWebElement CalendarHeader => browsers.WaitUntilVisible(By.CssSelector("div.MuiPickersCalendarHeader-label"));
