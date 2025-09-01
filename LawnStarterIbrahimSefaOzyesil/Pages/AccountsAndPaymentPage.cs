@@ -1,5 +1,6 @@
 ﻿using LawnStarterIbrahimSefaOzyesil.Assembly;
 using OpenQA.Selenium;
+using OpenQA.Selenium.BiDi.Communication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,6 @@ namespace LawnStarterIbrahimSefaOzyesil.Pages
     public class AccountsAndPaymentPage
     {
         private Browsers browsers;
-
         public AccountsAndPaymentPage(Browsers browsers)
         {
             this.browsers = browsers;
@@ -20,40 +20,34 @@ namespace LawnStarterIbrahimSefaOzyesil.Pages
         private IWebElement getFullName => browsers.WaitUntilVisible(By.Id("firstName"));
         private IWebElement getLastName => browsers.FindAndGetFirstElement(By.Id("lastName"));
         private IWebElement getEmailAddress => browsers.FindAndGetFirstElement(By.Id("email"));
-        private IWebElement CardNumberIframe => browsers.FindAndGetFirstElement(By.CssSelector("div#card-number iframe"));
-        private IWebElement ExpiryIframe => browsers.FindAndGetFirstElement(By.CssSelector("div#card-expiry iframe"));
-        private IWebElement CvcIframe => browsers.FindAndGetFirstElement(By.CssSelector("div#card-cvc iframe"));
+        private IWebElement getCardNumberIframe => browsers.WaitUntilVisible(By.CssSelector("iframe[title='Secure card number input frame']"));
+        private IWebElement getExpiryIframe => browsers.WaitUntilVisible(By.CssSelector("iframe[title='Secure expiration date input frame']"));
+        private IWebElement getCVCIframe => browsers.WaitUntilVisible(By.CssSelector("iframe[title='Secure CVC input frame']"));
         private IWebElement getBookNow => browsers.FindAndGetFirstElement(By.CssSelector("[data-testid='button-text']"));
         private IWebElement getAgreementCheckBox => browsers.FindAndGetFirstElement(By.CssSelector("div[data-testid='checkbox-0']"));
-
         public void SetFullNAme(string fullName)
         {
             getFullName.SendKeys(fullName);
-
         }
-        public void setLastName(string lastName)
+        public void SetLastName(string lastName)
         {
             getLastName.SendKeys(lastName);
         }
-        public void setEmaillAddress(string emailaddress)
+        public void SetEmaillAddress(string emailaddress)
         {
             getEmailAddress.SendKeys(emailaddress);
-
         }
         public void SetCardNumber(string cardNumber)
         {
-            TypeInIframe(CardNumberIframe, cardNumber);
-
+            TypeInIframe(getCardNumberIframe, cardNumber, "input[name='cardnumber']");
         }
-        public void SetExpiryDate(string expiryDate)
+        public void SetExpiry(string expiry)
         {
-
-            TypeInIframe(ExpiryIframe, expiryDate);
+            TypeInIframe(getExpiryIframe, expiry, "input[name='exp-date']");
         }
         public void SetCVV(string cvv)
         {
-            TypeInIframe(CvcIframe, cvv);
-
+            TypeInIframe(getCVCIframe, cvv, "input[name='cvc']");
         }
         public void ClickOnAgreementCheckBox()
         {
@@ -63,13 +57,11 @@ namespace LawnStarterIbrahimSefaOzyesil.Pages
         {
             getBookNow.Click();
         }
-        private void TypeInIframe(IWebElement iframe, string value)
-        {
-            browsers.GetDriver.SwitchTo().Frame(iframe);
-
-            var input = browsers.GetDriver.FindElement(By.CssSelector("input"));
+        private void TypeInIframe(IWebElement iframe, string value, string inputSelector)
+        {            
+            browsers.GetDriver.SwitchTo().Frame(iframe);           
+            var input = browsers.WaitUntilVisible(By.CssSelector(inputSelector));
             input.SendKeys(value);
-
             browsers.GetDriver.SwitchTo().DefaultContent();
         }
     }

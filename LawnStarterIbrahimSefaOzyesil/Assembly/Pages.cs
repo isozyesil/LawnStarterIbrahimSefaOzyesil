@@ -35,6 +35,5 @@ namespace LawnStarterIbrahimSefaOzyesil.Assembly
         {
             get { return new PropertyInfoPage(_browser); }
         }
-
     }
 }

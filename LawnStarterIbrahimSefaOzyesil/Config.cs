@@ -6,13 +6,11 @@ namespace LawnStarterIbrahimSefaOzyesil.Assembly
     public static class Config
     {
         private static IConfigurationRoot configuration;
-
         static Config()
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
             configuration = builder.Build();
         }
         public static string BaseUrl => configuration["AppSettings:BaseUrl"];

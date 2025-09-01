@@ -1,7 +1,6 @@
 ﻿using LawnStarterIbrahimSefaOzyesil.Assembly;
 using OpenQA.Selenium;
 
-
 namespace LawnStarterIbrahimSefaOzyesil
 {
     public class TestBase
@@ -31,7 +30,6 @@ namespace LawnStarterIbrahimSefaOzyesil
             {
                 Logger.Info($"Test {testName} PASSED");
             }
-
             Browser.Close();
         }
         private void TakeScreenshot(string testName)
@@ -62,6 +60,5 @@ namespace LawnStarterIbrahimSefaOzyesil
                 Logger.Error("Failed to capture screenshot: " + ex.Message);
             }
         }
-
     }
 }

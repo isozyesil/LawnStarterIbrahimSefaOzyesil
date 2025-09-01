@@ -37,7 +37,6 @@ namespace LawnStarterIbrahimSefaOzyesil.Assembly
             Goto(baseURL);
         }
         public IWebDriver GetDriver => webDriver;
-
         public void Goto(string url)
         {
             webDriver.Url = url;

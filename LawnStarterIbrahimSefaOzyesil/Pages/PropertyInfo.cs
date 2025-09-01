@@ -8,18 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LawnStarterIbrahimSefaOzyesil.Pages
-{
-
-    public class PropertyInfoPage
+{    public class PropertyInfoPage
     {
         private Browsers browsers;
-
         public PropertyInfoPage(Browsers browsers)
         {
             this.browsers = browsers;
         }
         private IWebElement getPropertyInfoPage => browsers.WaitUntilVisible(By.Id("app"));
-
         public void VerifyThatPropertyPageIsLoaded()
         {
            Assert.IsTrue(getPropertyInfoPage.Displayed, "Property Info page is not loaded.");   

@@ -1,8 +1,4 @@
-﻿using LawnStarterIbrahimSefaOzyesil.Paages;
-using LawnStarterIbrahimSefaOzyesil.Assembly;
-using NUnit.Framework;
-using Faker;
-using OpenQA.Selenium.DevTools.V137.Autofill;
+﻿using Faker;
 
 namespace LawnStarterIbrahimSefaOzyesil.Tests
 {
@@ -22,23 +18,30 @@ namespace LawnStarterIbrahimSefaOzyesil.Tests
         private void FillQuotePage()
         {
             Pages.QuoteQuestionsPage.SelectProperyType("Full Yard");
-            Pages.QuoteQuestionsPage.SelectLessThan5ftShrubs("5");
+            Pages.QuoteQuestionsPage.SelectLessThan5ftShrubs("3");
             Pages.QuoteQuestionsPage.SelectBetween5ftAnd10ftShrubs("0");
             Pages.QuoteQuestionsPage.SelectShrubsAndHedgesMoreThan10ft("0");
             Pages.QuoteQuestionsPage.ClickOnGetMyQuoteButton();            
         }
         private void FillSchedulingPage()
         {
+            var futureDate = DateTime.Today.AddMonths(6);
+            Pages.SchedulingPage.SetPreferredDate(futureDate);
+            Pages.SchedulingPage.SelectTrimmingPlan("Bi-Weekly");
+            Pages.SchedulingPage.SetPreferredDate(futureDate);            
             Pages.SchedulingPage.ClickOnContinueButton();            
         }
         private void FillAccountAndPaymentPage()
         {
+            Random randomNumber = new Random();
+            string expiryDate = DateTime.Now.AddYears(1).ToString("MM/yy");
+            string randomCVV = randomNumber.Next(100, 999).ToString();
             Pages.AccountsAndPaymentPage.SetFullNAme(Name.First());
-            Pages.AccountsAndPaymentPage.setLastName(Name.Last());
-            Pages.AccountsAndPaymentPage.setEmaillAddress(Internet.Email());            
-           // Pages.AccountsAndPaymentPage.SetCardNumber("4111111111111111");
-           // Pages.AccountsAndPaymentPage.SetExpiryDate("12/28");
-           // Pages.AccountsAndPaymentPage.SetCVV("123");
+            Pages.AccountsAndPaymentPage.SetLastName(Name.Last());
+            Pages.AccountsAndPaymentPage.SetEmaillAddress(Internet.Email());            
+            Pages.AccountsAndPaymentPage.SetCardNumber("4111111111111111");
+            Pages.AccountsAndPaymentPage.SetExpiry(expiryDate);
+            Pages.AccountsAndPaymentPage.SetCVV(randomCVV);
             Pages.AccountsAndPaymentPage.ClickOnAgreementCheckBox();
             Pages.AccountsAndPaymentPage.ClickOnBookNowButton();
         }
