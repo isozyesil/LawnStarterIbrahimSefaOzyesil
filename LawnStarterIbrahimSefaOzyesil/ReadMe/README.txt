@@ -3,6 +3,9 @@
 This folder contains **RunMe.csx**, a C# script that makes it easy to get the LawnStarter Test Framework running. 
 Instead of typing multiple commands, you can run this script to handle setup and execution.
 
+If you want to verify directlty run in powershell : dotnet test --configuration Release 
+
+
 ---
 
 ## Requirements

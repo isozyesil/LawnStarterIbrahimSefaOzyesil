@@ -30,3 +30,5 @@ else
     await Exec("dotnet", "test --configuration Release");
 }
 Console.WriteLine("== Done. Tests executed successfully. ==");
+
+
